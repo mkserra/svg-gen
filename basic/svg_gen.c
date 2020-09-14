@@ -218,14 +218,14 @@ uint64_t zpow(uint32_t base, uint32_t exp)
     return n;
 }
 
-uint32_t dist(point p, point q)
+int32_t dist(point p, point q)
 {
 	return zpow(q.x - p.x, 2) + zpow(q.y - p.y, 2);
 }
 
 uint32_t area(tri t)
 {
-	uint32_t n =
+	int32_t n =
 		(t.b.x - t.a.x) * 
 		(t.c.y - t.a.y) -
 		(t.b.y - t.a.y) *
@@ -236,9 +236,9 @@ uint32_t area(tri t)
 
 bool rotund(tri t)
 {
-	uint32_t l = dist(t.a, t.b);
-	uint32_t m = dist(t.b, t.c);
-	uint32_t n = dist(t.c, t.a);
+	int32_t l = dist(t.a, t.b);
+	int32_t m = dist(t.b, t.c);
+	int32_t n = dist(t.c, t.a);
 
 	uint32_t a = abs(l - m);
 	uint32_t b = abs(l - n);
