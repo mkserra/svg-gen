@@ -13,29 +13,31 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_gfxPrimitives.h>
 
-#define NUM_TRIGONS		600
+#define NUM_TRIGONS		270
 
-#define MIN_ALPHA		15
-#define MAX_ALPHA		80
+#define MIN_ALPHA		25
+#define MAX_ALPHA		140
 
-#define MIN_AREA		1000
-#define MAX_AREA		3600
-#define MAX_BIG_AREA	12000
-#define BIG_ODDS		20
+#define MIN_AREA		2000
+#define MAX_AREA		6500
+#define MAX_BIG_AREA	20000
+#define BIG_ODDS		25
 
-#define CHANNEL_DELTA	32
+#define CHANNEL_DELTA	24
 #define RGB_DELTA		16
-#define ALPHA_DELTA		12
+#define ALPHA_DELTA		10
 
 #define SAMPLING_RATE	1
 #define SAMPLING_DRIFT	24
 
-#define X_SCATTER		10
-#define Y_SCATTER		9
+#define X_SCATTER		8
+#define Y_SCATTER		7
 
-#define BG_R			210
-#define BG_G			180
-#define BG_B			140
+#define ROTUNDITY		3
+
+#define BG_R			170
+#define BG_G			170
+#define BG_B			170
 
 //----------------------------------------------------
 
@@ -244,7 +246,7 @@ bool rotund(tri t)
 	uint32_t b = abs(l - n);
 	uint32_t c = abs(m - n);
 
-	return MAX(MAX(a, b), c) < area(t) * 2;
+	return MAX(MAX(a, b), c) < area(t) * ROTUNDITY;
 }
 
 point centroid(tri t)
